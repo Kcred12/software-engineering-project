@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.urls import path
+from .views import hello_world
 
-def hello_world(request):
-    return render(request, 'helloWorld.html')
+urlpatterns = [
+    path('', hello_world, name='hello_world'),
+]
