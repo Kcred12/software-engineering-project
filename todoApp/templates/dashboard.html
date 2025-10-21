@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Hello World</title>
+</head>
+
+<body>
+    <h1>Dashboard</h1>
+
+    <h2>Task List</h2>
+    <ul>
+        {% for task in task_list %}
+        <li>{{ task.title }} - {{ task.description }} - {{ task.priority }}</li>
+        {% empty %}
+        <li>No tasks available.</li>
+        {% endfor %}
+</body>
+
+</html>

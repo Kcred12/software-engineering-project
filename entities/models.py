@@ -18,8 +18,6 @@ class Task(models.Model):
     priority = models.PositiveSmallIntegerField(choices=PRIORITY_CHOICES, default=PRIORITY_MEDIUM)
     due_date = models.DateTimeField(null=True, blank=True)
     completed = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['completed', 'due_date', '-priority']  # default ordering; you can override in views
