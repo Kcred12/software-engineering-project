@@ -13,10 +13,18 @@
     <h2>Task List</h2>
     <ul>
         {% for task in task_list %}
-        <li>{{ task.title }} - {{ task.description }} - {{ task.priority }}</li>
+        <li>
+            {{ task.title }} - {{ task.description }} - Priority {{ task.priority }} - PK {{ task.pk }}
+            [<a href="{% url 'task_edit' task.pk %}">edit</a>]
+            [<a href="{% url 'task_delete' task.pk %}">delete</a>]
+        </li>
         {% empty %}
         <li>No tasks available.</li>
         {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'task_create' %}">Add new task</a></p>
+
 </body>
 
 </html>
