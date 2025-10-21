@@ -1,10 +1,12 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Hello World</title>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'tasks/styles.css' %}" />
 </head>
 
 <body>
@@ -13,10 +15,11 @@
     <h2>Task List</h2>
     <ul>
         {% for task in task_list %}
-        <li>
-            {{ task.title }} - {{ task.description }} - Priority {{ task.priority }} - PK {{ task.pk }}
-            [<a href="{% url 'task_edit' task.pk %}">edit</a>]
-            [<a href="{% url 'task_delete' task.pk %}">delete</a>]
+        <li data-title="{{ task.title }}" data-description="{{ task.description|default:'(No description provided)' }}"
+            data-due="{{ task.due_date|date:'M d, Y H:i'|default:'No due date' }}" onclick="openModal(this)">
+            {{ task.title }} — Priority {{ task.get_priority_display }}
+            [<a href="{% url 'task_edit' task.pk %}" onclick="event.stopPropagation()">edit</a>]
+            [<a href="{% url 'task_delete' task.pk %}" onclick="event.stopPropagation()">delete</a>]
         </li>
         {% empty %}
         <li>No tasks available.</li>
@@ -25,6 +28,17 @@
 
     <p><a href="{% url 'task_create' %}">Add new task</a></p>
 
+    <!-- Modal structure -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p class="meta"><strong>Due Date:</strong> <span id="modalDue"></span></p>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script src="{% static 'tasks/scripts.js' %}"></script>
 </body>
 
 </html>

@@ -20,7 +20,7 @@ class Task(models.Model):
     completed = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['completed', 'due_date', '-priority']  # default ordering; you can override in views
+        ordering = ['due_date', '-priority']  # default ordering; you can override in views
         indexes = [
             models.Index(fields=['due_date']),
         ]
