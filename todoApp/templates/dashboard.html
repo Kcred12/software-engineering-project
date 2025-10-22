@@ -13,6 +13,10 @@
     <h1>Dashboard</h1>
 
     <h2>Task List</h2>
+    <div>
+        <a href="{% url 'showDashboard' %}?sort=-priority" class="sort-btn">Priority</a>
+        <a href="{% url 'showDashboard' %}?sort=due_date" class="sort-btn">Due Date</a>
+    </div>
     <ul>
         {% for task in task_list %}
         <li data-title="{{ task.title }}" data-description="{{ task.description|default:'(No description provided)' }}"

@@ -16,7 +16,7 @@ class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     priority = models.PositiveSmallIntegerField(choices=PRIORITY_CHOICES, default=PRIORITY_MEDIUM, )
-    due_date = models.DateTimeField(null=True, blank=True)
+    due_date = models.DateTimeField(default=None)
     completed = models.BooleanField(default=False)
 
     class Meta:

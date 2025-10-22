@@ -3,9 +3,10 @@ const editButton = document.getElementById("editButton");
 const deleteButton = document.getElementById("deleteButton");
 
 function openModal(el) {
+
     document.getElementById("modalTitle").textContent = el.dataset.title;
     document.getElementById("modalDescription").textContent = el.dataset.description;
-    document.getElementById("modalDue").textContent = el.dataset.dueDate || "No due date";
+    document.getElementById("modalDue").textContent = el.dataset.due;
 
     editButton.href = el.dataset.edit_url;
     deleteButton.href = el.dataset.delete_url;

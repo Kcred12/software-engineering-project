@@ -3,8 +3,16 @@ from entities.models import Task
 from entities.forms import TaskForm
 
 def showDashboard(request):
-    # Getting the model and database data available to the template
-    task_list = Task.objects.all()
+
+    # Get the sort parameters from the request
+    if 'sort' in request.GET:
+        sort = request.GET.get('sort')
+    else:
+        sort = '-priority'
+
+    task_list = Task.objects.all().order_by(sort)
+
+
     context = {'task_list': task_list}
     return render(request, 'dashboard.html', context)
 
