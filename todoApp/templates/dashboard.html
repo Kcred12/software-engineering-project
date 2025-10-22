@@ -16,10 +16,10 @@
     <ul>
         {% for task in task_list %}
         <li data-title="{{ task.title }}" data-description="{{ task.description|default:'(No description provided)' }}"
-            data-due="{{ task.due_date|date:'M d, Y H:i'|default:'No due date' }}" onclick="openModal(this)">
+            data-due="{{ task.due_date|date:'M d, Y H:i'|default:'No due date' }}"
+            data-edit_url="{% url 'task_edit' task.pk %}" data-delete_url="{% url 'task_delete' task.pk %}"
+            onclick="openModal(this)">
             {{ task.title }} — Priority {{ task.get_priority_display }}
-            [<a href="{% url 'task_edit' task.pk %}" onclick="event.stopPropagation()">edit</a>]
-            [<a href="{% url 'task_delete' task.pk %}" onclick="event.stopPropagation()">delete</a>]
         </li>
         {% empty %}
         <li>No tasks available.</li>
@@ -28,17 +28,21 @@
 
     <p><a href="{% url 'task_create' %}">Add new task</a></p>
 
-    <!-- Modal structure -->
+    <!-- The popup window for a task -->
     <div id="taskModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h3 id="modalTitle"></h3>
             <p class="meta"><strong>Due Date:</strong> <span id="modalDue"></span></p>
             <p id="modalDescription"></p>
-        </div>
-    </div>
 
-    <script src="{% static 'tasks/scripts.js' %}"></script>
+            <div class="task-actions">
+                <a href="#" id="editButton">Edit</a>
+                <a href="#" id="deleteButton">Delete</a>
+            </div>
+        </div>
+
+        <script src="{% static 'tasks/scripts.js' %}"></script>
 </body>
 
 </html>

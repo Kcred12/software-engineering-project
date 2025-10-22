@@ -67,3 +67,46 @@ li:hover {
     font-size: 0.9em;
     margin-bottom: 1em;
 }
+
+/* General button style for task links */
+#deleteButton {
+    display: inline-block;
+    /* Treat like a button */
+    padding: 6px 12px;
+    /* Add some space */
+    margin-left: 5px;
+    /* Small gap between buttons */
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #fff;
+    background-color: #dc3545;
+    /* Text color */
+    text-decoration: none;
+    /* Remove underline */
+    border: 1px outset buttonborder;
+    border-radius: 3px;
+    /* Rounded corners */
+    transition: background-color 0.2s, transform 0.1s;
+    /* Smooth hover */
+}
+
+#editButton {
+    display: inline-block;
+    /* Treat like a button */
+    padding: 6px 12px;
+    /* Add some space */
+    margin-left: 5px;
+    /* Small gap between buttons */
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #fff;
+    background-color: #0fb9ec;
+    /* Text color */
+    text-decoration: none;
+    /* Remove underline */
+    border: 1px outset buttonborder;
+    border-radius: 3px;
+    /* Rounded corners */
+    transition: background-color 0.2s, transform 0.1s;
+    /* Smooth hover */
+}
