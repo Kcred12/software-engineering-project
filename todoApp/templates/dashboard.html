@@ -19,7 +19,14 @@
     </div>
     <ul>
         {% for task in task_list %}
-        <li data-title="{{ task.title }}" data-description="{{ task.description|default:'(No description provided)' }}"
+        <li class="
+            {% if task.priority == task.PRIORITY_LOW %}priority-low
+            {% elif task.priority == task.PRIORITY_MEDIUM %}priority-medium
+            {% elif task.priority == task.PRIORITY_HIGH %}priority-high
+            {% elif task.priority == task.PRIORITY_CRITICAL %}priority-critical
+            {% endif %}"
+
+            data-title="{{ task.title }}" data-description="{{ task.description|default:'(No description provided)' }}"
             data-due="{{ task.due_date|date:'M d, Y H:i'|default:'No due date' }}"
             data-edit_url="{% url 'task_edit' task.pk %}" data-delete_url="{% url 'task_delete' task.pk %}"
             onclick="openModal(this)">
@@ -30,7 +37,7 @@
         {% endfor %}
     </ul>
 
-    <p><a href="{% url 'task_create' %}">Add new task</a></p>
+    <p><a href="{% url 'task_create' %}" id="new_task_button">Add new task</a></p>
 
     <!-- The popup window for a task -->
     <div id="taskModal" class="modal">
