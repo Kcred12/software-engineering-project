@@ -1,4 +1,5 @@
 const modal = document.getElementById("taskModal");
+const completeButton = document.getElementById("completeButton");
 const editButton = document.getElementById("editButton");
 const deleteButton = document.getElementById("deleteButton");
 
@@ -8,6 +9,7 @@ function openModal(el) {
     document.getElementById("modalDescription").textContent = el.dataset.description;
     document.getElementById("modalDue").textContent = el.dataset.due;
 
+    completeButton.href = el.dataset.complete_url;
     editButton.href = el.dataset.edit_url;
     deleteButton.href = el.dataset.delete_url;
 

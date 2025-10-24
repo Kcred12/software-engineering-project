@@ -27,6 +27,13 @@ def task_create(request):
         form = TaskForm()
     return render(request, 'task_form.html', {'form': form, 'action': 'Create'})
 
+def task_complete(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.completed = True
+    task.save()
+    task.delete()
+    return redirect('showDashboard')
+
 
 def task_edit(request, pk):
     task = get_object_or_404(Task, pk=pk)
