@@ -23,6 +23,27 @@ li:hover {
     background-color: #e6f0ff;
 }
 
+.priority-low {
+    background-color: #d1e7dd; /* light green */
+    border-left: 5px solid #198754;
+}
+
+.priority-medium {
+    background-color: #fff3cd; /* light yellow */
+    border-left: 5px solid #ffc107;
+}
+
+.priority-high {
+    background-color: #f1bc49; /* light orange */
+    border-left: 5px solid #fd7e14;
+}
+
+.priority-critical {
+    background-color: #f6a2a9; /* light red */
+    border-left: 5px solid #dc3545;
+}
+
+
 /* Modal styles */
 .modal {
     display: none;
@@ -90,6 +111,27 @@ li:hover {
     /* Smooth hover */
 }
 
+#completeButton {
+    display: inline-block;
+    /* Treat like a button */
+    padding: 6px 12px;
+    /* Add some space */
+    margin-left: 5px;
+    /* Small gap between buttons */
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #fff;
+    background-color: #28a745;
+    /* Text color */
+    text-decoration: none;
+    /* Remove underline */
+    border: 1px outset buttonborder;
+    border-radius: 3px;
+    /* Rounded corners */
+    transition: background-color 0.2s, transform 0.1s;
+    /* Smooth hover */
+}
+
 #editButton {
     display: inline-block;
     /* Treat like a button */
@@ -106,6 +148,27 @@ li:hover {
     /* Remove underline */
     border: 1px outset buttonborder;
     border-radius: 3px;
+    /* Rounded corners */
+    transition: background-color 0.2s, transform 0.1s;
+    /* Smooth hover */
+}
+
+#new_task_button {
+    display: inline-block;
+    /* Treat like a button */
+    padding: 6px 12px;
+    /* Add some space */
+    margin-left: 5px;
+    /* Small gap between buttons */
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #000000;
+    background-color: #79fa52;
+    /* Text color */
+    text-decoration: none;
+    /* Remove underline */
+    border: 1px outset buttonborder;
+    border-radius: 100px;
     /* Rounded corners */
     transition: background-color 0.2s, transform 0.1s;
     /* Smooth hover */
